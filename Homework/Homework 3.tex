@@ -1,0 +1,158 @@
+\documentclass[boxes]{rutgers_hw}
+\usepackage{rutgers}
+% \usepackage[none]{hyphenat} % Use to avoid hyphens
+
+
+
+\author{Rohan Karamel}
+\netid{rak218} 
+\assignment{Homework 3}
+\date{\today}
+\course{Graph Theory}
+\semester{Spring 2024}
+\instructor{Professor Benjamin Gunby}
+\institution{Rutgers University}
+
+\newtheorem*{lemma}{Lemma}
+\newtheorem*{solutions}{Solution}
+
+\begin{document}
+
+  \maketitle
+
+  \begin{exern}{1a}
+    
+  \end{exern}
+  \begin{solutions}
+    Here's an adjacency matrix, A, of G\@:
+    \[
+      \begin{bmatrix}
+        0 & 1 & 0 & 0 & 1 \\
+        1 & 0 & 1 & 0 & 0 \\
+        0 & 1 & 0 & 1 & 0 \\
+        0 & 0 & 1 & 0 & 1 \\
+        1 & 0 & 0 & 1 & 0
+      \end{bmatrix} 
+    \]
+  \end{solutions}
+
+  \begin{exern}{1b}
+
+  \end{exern}
+  \begin{solutions}
+    Let the first row and column of the matrix $A$ signify the vertex $a$.
+    Likewise, let the third row and column signify the vertex $b${(such that the distance between $a$ and $b$ is 2)}. 
+    To find the number of walks of length 30, we can just find the $(1,3)$ or $(3,1)$ element of the matrix $A^{30}$.
+    Using a computer, the matrix $A^{30}$ is
+    \[
+      \begin{bmatrix}
+        215492564 & 214146295 & 214978335 & 214978335 & 214146295 \\
+        214146295 & 215492564 & 214146295 & 214978335 & 214978335\\
+        214978335 & 214146295 & 215492564 & 214146295 & 214978335 \\
+        214978335 & 214978335 & 214146295 & 215492564 & 214146295 \\
+        214146295 & 214978335 & 214978335 & 214146295 & 215492564
+      \end{bmatrix}
+    \]
+
+    Thus, the number of walks of length 30 from $a$ to $b$ is $214\,978\,335$.
+  \end{solutions}
+
+  \pagebreak
+
+  \begin{exern}{2}
+    
+  \end{exern}
+  \begin{proof}
+    Let T be the transition probability matrix of G. To prove that $\frac{\deg(v)}{2m}$ is a steady state, we need to show that
+    \[ 
+      Tx = x, \hspace{5 mm} x = 
+      \begin{bmatrix}
+        \frac{\deg(v_1)}{2m} \\ \frac{\deg(v_2)}{2m} \\ \vdots \\ \frac{\deg(v_n)}{2m}
+      \end{bmatrix}
+    \]
+    Now, we know that
+    \[
+      Tx = 
+      \begin{bmatrix}
+        \sum_{k=1}^n T_{1,i} \cdot \frac{\deg(v_1)}{2m} \\
+        \sum_{k=1}^n T_{2,i} \cdot \frac{\deg(v_2)}{2m} \\
+        \vdots \\
+        \sum_{k=1}^n T_{n,i} \cdot \frac{\deg(v_n)}{2m}
+      \end{bmatrix}
+    \]
+    By construction, we also know that the $(i,j)$-element of T is equal to $\frac{1}{\deg(v_i)}$ if $i \neq j$ and $v_i$ is connected to $v_j$.
+    Let $f(u,v)$ signify that the vertices $u$ and $v$ are connected. 
+    Therefore, we can simplify $Tx$ to 
+    \[ 
+      \begin{bmatrix}
+        \sum_{k:f(v_1,v_k)} \frac{1}{\deg(v_1)} \cdot \frac{\deg(v_1)}{2m} \\
+        \sum_{k:f(v_2,v_k)} \frac{1}{\deg(v_2)} \cdot \frac{\deg(v_2)}{2m} \\
+        \vdots \\
+        \sum_{k:f(v_n,v_k)} \frac{1}{\deg(v_n)} \cdot \frac{\deg(v_n)}{2m}
+      \end{bmatrix}
+    \]
+    This can be written as
+    \[ 
+      \begin{bmatrix}
+        \sum_{k:f(v_1,v_k)} \frac{1}{2m} \\
+        \sum_{k:f(v_2,v_k)} \frac{1}{2m} \\
+        \vdots \\
+        \sum_{k:f(v_n,v_k)} \frac{1}{2m}
+      \end{bmatrix}
+    \]
+    Because there are $\deg(v_i)$ terms of the $i^{th}$ sum, this equals
+    \[
+      \begin{bmatrix}
+        \frac{\deg(v_1)}{2m} \\ \frac{\deg(v_2)}{2m} \\ \vdots \\ \frac{\deg(v_n)}{2m}
+      \end{bmatrix}
+    \]
+
+    Thus, is equivalent to $x$ and we are done.
+    
+  \end{proof}
+
+  \begin{exern}{3a}
+    
+  \end{exern}
+  \begin{proof}
+    We know that because G has 6 vertices and non-bipartite, it must contain an odd cycle. 
+    Notably, a 3-cycle (triangle) or a 5-cycle because G has only 6 vertices. 
+    Assume for the sake of contradiction that G doesn't contain a triangle. 
+    We can form G by starting with $C_5$ as it must contain the 5-cycle.  
+    However, to make G 3-regular, we must connect more edges. 
+    But there is no possible edge you can add between vertices that will not create a 3-cycle.
+    Thus, a contradiction forms. Therefore G must contain a triangle.
+  \end{proof}
+
+  \begin{exern}{3b}
+    
+  \end{exern}
+  \begin{proof}
+    3 edges because U needs at least 3 edges to make the triangle. U also has at most 3 edges connected to each of its vertices as a triangle is also the complete graph on 3 vertices. Therefore, there is exactly 3 edges. \\
+    Because each vertex has degree 3, and the vertices in U connect to two other vertices in U, each of those vertices must connect to exactly 1 other vertex in W. Therefore there is 3 edges that connect a vertex in U and in W, 1 for each vertex in U. \\
+    We have sorted that all the vertices in U are connected to two vertices in U and 1 in W. Now, let's say all of the vertices in U connected to the same vertex in W. 
+    Then it would be impossible for the other vertices in W to be degree 3, as they can only connect to each other and are max degree 2.
+    Now, suppose that 2 vertices in U connected to the same vertex in W.
+    Then, the vertex in W with no connection to U could only connect to the other two vertices in W, which would be max degree 2.
+    Therefore, we have shown that each vertex in U connects to a unique vertex in W. 
+    Because of this, it follows that each vertex in W must connect to the other two vertices in W to be degree 3. \\
+    We know W forms a triangle because each of the three vertices in W is connected to two other vertices in W. 
+    This creates a 3-cycle/triangle.
+  \end{proof}
+
+  \pagebreak
+
+  \begin{exern}{3c}
+    
+  \end{exern}
+  \begin{proof}
+    Let the smaller triangle in the drawing be U. Let the bigger triangle be W. 
+    We can see that the drawing follows all the same rules as G does.
+    This includes, 3-regular, non-bipartite, and all the rules we showed in 3b.
+    We can see the 3 edges that connect vertices in U which form a triangle.
+    We can see the 3 edges that connect a vertex in U with a unique vertex in W (and vice-versa).
+    We can see the 3 edges that connect vertices in W which form a triangle.
+  \end{proof}
+
+
+\end{document}
