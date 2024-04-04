@@ -1,0 +1,100 @@
+\documentclass[12pt,reqno]{amsart}
+
+\usepackage{graphicx}
+
+\usepackage{amssymb}
+\usepackage{amsthm}
+\theoremstyle{plain}
+
+\newtheorem*{definition}{Definition}
+\newtheorem*{axiom}{Axiom}
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{lemma}{Lemma}
+\newtheorem*{example}{Example}
+\newtheorem*{proposition}{Proposition}
+\usepackage{lineno}
+
+\title{Honors Real Analysis Lecture 21}
+\author{Rohan Karamel}
+
+\begin{document}
+
+    \begin{abstract}
+        This lecture reviews material to prepare for the upcoming second midterm.
+    \end{abstract}
+
+    \maketitle
+
+    \begin{theorem}
+        Let G be a connected d-regular non-Eulerian graph. If $\bar{G}$ is connected, then $\bar{G}$ is Eulerian.
+    \end{theorem}
+
+    \begin{proof}
+        We know that Eulerian is equivalent to being connected and having all vertices of even degree.
+        Since $G$ is connected and $d$-regular, we only need to show that $d$ must be even.
+        We also know that we cannot have a odd-regular graph on odd vertices, so $n$ must be even.
+        Thus $\bar{G}$ has $n - 1 - d$ edges, therefore $d$ must be even as the number of vertices cannot be odd. 
+        Thus, $\bar{G}$ is Eulerian.
+    \end{proof}
+
+    \begin{theorem}
+        If $G - |S|$ has more than $|S|$ components, then $G$ is not hamiltonian.
+    \end{theorem}
+
+    \begin{proof}
+        If for all non-adjacent vertices u,v in $G$, $\deg(u) + \deg(v) \ge n$.
+        Then, $\delta(G) \ge \frac{n}{2} \implies G$ is hamiltonian.
+    \end{proof}
+
+    \begin{theorem}
+        There exists a graph with $\kappa(G) \ge n$ but $G$ is not hamiltonian.
+    \end{theorem}
+
+    \begin{proof}
+        Consider K$_{n,n+1}$, $\kappa(G) = n$ but $G$ is not hamiltonian.
+    \end{proof}
+
+    \begin{theorem}
+        There exists a graph with $\kappa(G) \ge n$ but $G$ does not contain a hamiltonian path.
+    \end{theorem}
+
+    \begin{proof}
+        Consider K$_{n,n+2}$ where $\kappa(G) = n$ but $G$ does not contain a hamiltonian path.
+    \end{proof}
+
+    \begin{theorem}
+        Every tree has at most 1 perfect matching.
+    \end{theorem}
+
+    \begin{proof}
+        Recall that a perfect matching is a matching that uses every vertex.
+        Suppose for the sake of contradiction that there exists at least 2 perfect matchings.
+        Then, there must exist a vertex that is matched to 2 different vertices in the 2 perfect matchings.
+    \end{proof}
+
+    \begin{theorem}
+        The number of spanning trees is equal to 
+        \[ \frac1n \lambda_1 \lambda_2 \dots \lambda_{n-1}\]
+    \end{theorem}
+
+    \begin{example}
+        Consider the adjacency matrix below:
+        \[\begin{bmatrix}
+            2 & -1 & 0 & -1 \\
+            -1 & 2 & -1 & 0 \\
+            0 & -1 & 2 & -1 \\
+            -1 & 0 & -1 & 2
+        \end{bmatrix} \]
+    \end{example}
+
+    \begin{theorem}
+        We know that $\kappa(G) \le \lambda(G) \le \delta(G) \le \lfloor{\frac{2m}{n}}\rfloor$
+        If G is a tree, then all terms are equal.
+    \end{theorem}
+
+    \begin{proof}
+        If G is a tree, then $\kappa(G) = \lambda(G) = \delta(G) = n - 1$.
+    \end{proof}
+
+\end{document}
